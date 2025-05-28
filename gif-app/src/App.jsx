@@ -2,6 +2,7 @@ import RandomGif from "./components/RandomGif"
 import SearchGif from "./components/SearchGif"
 import bgImg from "./assets/bg_gif.png"
 
+// 42 min
 
 const App = () => {
   return (
