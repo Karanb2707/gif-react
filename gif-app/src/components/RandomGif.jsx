@@ -11,7 +11,7 @@ const RandomGif = () => {
         const url = `https://api.giphy.com/v1/gifs/random?api_key=${API_KEY}`
         const {data} = await axios.get(url);
         const imgSource = data.data.images.downsized_large.url;
-        setGif(imgSource);        
+        setGif(imgSource);     
     }
 
     useEffect(() => {
