@@ -6,7 +6,7 @@ const API_KEY = import.meta.env.VITE_GIPHY_API_KEY;
 
 const RandomGif = () => {
 
-    const [gif, setGif] = useState('');
+    const [gif, setGif] = useState(null);
     const [loading, setLoading] = useState(false);
 
     async function fetchData() {
