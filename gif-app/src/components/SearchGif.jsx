@@ -1,31 +1,43 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import Spinner from './Spinner';
+import useGif from '../hooks/useGif';
 
 const API_KEY = import.meta.env.VITE_GIPHY_API_KEY;
 
 const SearchGif = () => {
 
-    const [gif, setGif] = useState(null);
-    const [loading, setLoading] = useState(false);
+    // First way
+    // const [gif, setGif] = useState(null);
+    // const [loading, setLoading] = useState(false);
+    // const [search, setSearch] = useState('');
+
+    // async function fetchData() {
+    //     setLoading(true);
+    //     const url = `https://api.giphy.com/v1/gifs/random?api_key=${API_KEY}&tag=${search}`
+    //     const {data} = await axios.get(url);
+    //     const imgSource = data.data.images.downsized_large.url;
+    //     setGif(imgSource);
+    //     setLoading(false);
+    // }
+
+    // useEffect(() => {
+    //     fetchData();
+    // }, [])
+
+    // function clickHandler() {
+    //     fetchData();
+    // }
+
+    // function changeHandler(event) {
+    //     setSearch(event.target.value);
+    //     console.log(search);
+    // }
+
+    // Second Way
     const [search, setSearch] = useState('');
 
-    async function fetchData() {
-        setLoading(true);
-        const url = `https://api.giphy.com/v1/gifs/random?api_key=${API_KEY}&tag=${search}`
-        const {data} = await axios.get(url);
-        const imgSource = data.data.images.downsized_large.url;
-        setGif(imgSource);
-        setLoading(false);
-    }
-
-    useEffect(() => {
-        fetchData();
-    }, [])
-
-    function clickHandler() {
-        fetchData();
-    }
+    const {gif, loading, fetchData} = useGif(search);
 
     function changeHandler(event) {
         setSearch(event.target.value);
@@ -43,7 +55,7 @@ const SearchGif = () => {
             <input type="text" className='w-[220px] border rounded-md p-1 text-center' placeholder='Search GIF'
                 onChange={changeHandler} value={search}/>
 
-            <button onClick={clickHandler} className='py-2 px-10 border rounded-2xl bg-red-600 text-white hover:bg-red-700 font-semibold'>
+            <button onClick={() => fetchData()} className='py-2 px-10 border rounded-2xl bg-red-600 text-white hover:bg-red-700 font-semibold'>
                 Generate
             </button>
         </div>
