@@ -37,7 +37,7 @@ const SearchGif = () => {
     // Second Way
     const [search, setSearch] = useState('');
 
-    const {gif, loading, fetchData} = useGif(search);
+    const {gif, loading, fetchData} = useGif();
 
     function changeHandler(event) {
         setSearch(event.target.value);
@@ -55,7 +55,7 @@ const SearchGif = () => {
             <input type="text" className='w-[220px] border rounded-md p-1 text-center' placeholder='Search GIF'
                 onChange={changeHandler} value={search}/>
 
-            <button onClick={() => fetchData()} className='py-2 px-10 border rounded-2xl bg-red-600 text-white hover:bg-red-700 font-semibold'>
+            <button onClick={() => fetchData(search)} className='py-2 px-10 border rounded-2xl bg-red-600 text-white hover:bg-red-700 font-semibold'>
                 Generate
             </button>
         </div>

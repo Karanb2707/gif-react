@@ -29,7 +29,7 @@ const RandomGif = () => {
     // }
 
     // Second way
-    const {gif, loading, fetchData} = useGif('');
+    const {gif, loading, fetchData} = useGif();
 
     return (
         <div className='w-1/2 h-[400px] flex flex-col items-center justify-evenly gap-2 p-2 border-2 rounded-2xl 
